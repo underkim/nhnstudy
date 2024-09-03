@@ -11,16 +11,18 @@ public class Test {
         list.add("R");
         list.add("J");
 
-        for (String s : list) {
-            System.out.println(s);
-        }
+        list.forEach(System.out::println);
 
-        list.remove(0);
-        list.remove(1);
+        // for (String s : list) {
+        // System.out.println(s);
+        // }
 
-        for (String s : list) {
-            System.out.println(s);
-        }
+        // list.remove(0);
+        // list.remove(1);
+
+        // for (String s : list) {
+        // System.out.println(s);
+        // }
         // // LinkedList<String> s = new LinkedList();
 
         // // s.add("A");
