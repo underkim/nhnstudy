@@ -12,6 +12,10 @@ class LinkedListQueue<E> implements Queue<E> {
 
     LinkedList<E> list;
 
+    public LinkedListQueue() {
+        list = new LinkedList<>();
+    }
+
     @Override
     public void enqueue(E e) {
         this.list.add(e);
