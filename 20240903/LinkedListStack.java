@@ -3,6 +3,10 @@ import java.util.LinkedList;
 public class LinkedListStack<E> implements Stackable<E> {
     LinkedList<E> list;
 
+    public LinkedListStack() {
+        this.list = new LinkedList<>();
+    }
+
     @Override
     public boolean isEmpty() {
         return list.isEmpty();
