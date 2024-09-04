@@ -2,10 +2,43 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class JBGW08_006_word {
+
+    static List<Map.Entry<String, String>> list;
+
+    public static String binarySearching(String target) {
+        Collections.sort(list, new Comparator<Map.Entry<String, String>>() {
+            @Override
+            public int compare(Entry<String, String> o1, Entry<String, String> o2) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
+        int left = 0;
+        int right = list.size() - 1;
+        String word = "not found";
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+            if (list.get(mid).getKey().equals(target)) {
+                word = list.get(mid).getValue();
+                break;
+            } else if (list.get(mid).getKey().compareTo(target) > 1) {
+                right--;
+            } else
+                left++;
+        }
+        return word;
+    }
+
     public static void main(String[] arg) throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("words.txt"));
 
@@ -38,6 +71,8 @@ public class JBGW08_006_word {
 
         }
 
+        list = new ArrayList<>(map.entrySet());
+
         Scanner sc = new Scanner(System.in);
 
         while (true) {
@@ -45,7 +80,8 @@ public class JBGW08_006_word {
             String searchWord = sc.nextLine().trim();
             if (searchWord.equals("exit()"))
                 break;
-            System.out.println(map.get(searchWord));
+            System.out.println(binarySearching(searchWord));
+
         }
 
         sc.close();
