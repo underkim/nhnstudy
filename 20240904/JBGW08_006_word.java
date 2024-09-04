@@ -31,10 +31,10 @@ public class JBGW08_006_word {
             if (list.get(mid).getKey().equals(target)) {
                 word = list.get(mid).getValue();
                 break;
-            } else if (list.get(mid).getKey().compareTo(target) > 1) {
-                right--;
+            } else if (list.get(mid).getKey().compareTo(target) > 0) {
+                right = mid + 1;
             } else
-                left++;
+                left = mid - 1;
         }
         return word;
     }
